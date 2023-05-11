@@ -1,5 +1,5 @@
 #!/bin/bash
-# run as sh ./startdocker.sh IMAGEID
+# run as "sh ./startdocker.sh IMAGEID"
 ################ params #########################
 
 if [ -z "$1" ]; then
