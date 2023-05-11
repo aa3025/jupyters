@@ -6,7 +6,7 @@ To build the image, pull this repository
 
 `git clone https://github.com/aa3025/jupyters.git`
 
-cd jupyters
+`cd jupyters`
 
 If necessary edit the 1st section of the Dockerfile, to change user data: UID/GID, username and password and parameters section in 02_startdocker.sh file
 
