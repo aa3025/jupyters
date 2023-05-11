@@ -25,7 +25,7 @@ gpus="" # if you dont need GPUs
   local_share=$HOME/share
   share="-v ${local_share}:/share"
   mkdir -p $local_share
-# if not enable below line: 
+# if no share needed, enable the below line: 
   # share=""
 
 port=8888 #start jupyter on this port and expose this port number in container
