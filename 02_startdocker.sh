@@ -11,7 +11,7 @@ docker_image=$1
 fi
 
 
-# name to gove to your container:
+# name to give to your container:
 container_name=${USER}_python3
 # remove previously created containers with the same name:
 docker rm -f $container_name
