@@ -1,7 +1,15 @@
 #!/bin/bash
+# run as sh ./startdocker.sh IMAGEID
 ################ params #########################
-# Change to docker image mane you have built with the provided Dockerfile
-docker_image="aa3025/python3_10"
+
+if [ -z "$1" ]; then
+# change to another existing docker image name you have built with the provided Dockerfile
+  docker_image="my/image:last"
+else  
+# if $1 exists supply imageid as an external parameter:
+docker_image=$1
+fi
+
 
 # name to gove to your container:
 container_name=${USER}_python3
@@ -23,6 +31,5 @@ token=qwerty
 
 mkdir -p $share
 
-docker pull $docker_image
 docker run --rm -it -d $gpus -v ${share}:/share --name ${container_name} --hostname ${container_name} $ports -e TZ=Europe/London ${docker_image} /bin/bash
 docker exec -u $u_id:$g_id ${container_name} /home/user/.conda/envs/jup/bin/jupyter lab --ip=0.0.0.0 --port=$port --NotebookApp.token=$token
