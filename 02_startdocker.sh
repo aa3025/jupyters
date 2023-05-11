@@ -18,12 +18,18 @@ container_name=${USER}_python3
 # gpus=" --gpus all"
 gpus="" # if you dont need GPUs
 
-share=/home/$USER/share
-# Change to UID/GID of the local user who will run the container
-u_id=1000
-g_id=1000
+# do you want to share the local folder to the container?
+  local_share=/home/$USER/share
+  share="-v ${share}:/share"
+# if not enable below line: 
+  # share=""
+
 port=8888 #start jupyter on this port and expose this port number in container
 ports="-p $port:$port"
+
+# get UID and GID defined in Dockerfile:
+u_id=$(cat Dockerfile | grep "ARG uid" | cut -d'=' -f2)
+g_id=u_id=$(cat Dockerfile | grep "ARG gid" | cut -d'=' -f2)
 
 # change to the jupyterlab token you want
 token=qwerty
@@ -31,5 +37,5 @@ token=qwerty
 
 mkdir -p $share
 
-docker run --rm -it -d $gpus -v ${share}:/share --name ${container_name} --hostname ${container_name} $ports -e TZ=Europe/London ${docker_image} /bin/bash
+docker run --rm -it -d $gpus $share --name ${container_name} --hostname ${container_name} $ports -e TZ=Europe/London ${docker_image} /bin/bash
 docker exec -u $u_id:$g_id ${container_name} /home/user/.conda/envs/jup/bin/jupyter lab --ip=0.0.0.0 --port=$port --NotebookApp.token=$token
