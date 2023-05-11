@@ -1,6 +1,6 @@
 # jupyters
 
-Dockerfile and accompanying scripts for creating a container with miniconda3 based python3 and user environment "jup" for launching jupyter lab.
+This repository provides the Dockerfile and accompanying scripts for creating a docker container with miniconda3 python and user environment "jupyterenv" for launching jupyter lab in a container.
 
 To build the image, pull this repository
 
