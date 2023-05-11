@@ -15,8 +15,8 @@ fi
 container_name=${USER}_python3
 
 # do you have GPUs? (Nvidia docker support plugin must be installed on the system), otherwise leave empty as gpus=""
-gpus=" --gpus all"
-# gpus="" # if you dont need GPUs
+# gpus=" --gpus all"
+gpus="" # if you dont need GPUs
 
 share=/home/$USER/share
 # Change to UID/GID of the local user who will run the container
