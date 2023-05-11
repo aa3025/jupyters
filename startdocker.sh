@@ -3,7 +3,9 @@
 # Change to docker image you build in with the Dockerfile
 docker_image="aa3025/python3_10"
 
+# name to gove to your container:
 container_name=${USER}_python3
+
 # do you have GPUs? (Nvidia docker support plugin must be installed on the system), otherwise leave empty
 gpus=" --gpus all"
 # gpus="" # if you dont need GPUs
