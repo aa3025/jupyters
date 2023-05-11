@@ -1,6 +1,6 @@
 #!/bin/bash
 ################ params #########################
-# Change to docker image you build in with the Dockerfile
+# Change to docker image mane you have built with the provided Dockerfile
 docker_image="aa3025/python3_10"
 
 # name to gove to your container:
