@@ -14,8 +14,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
  && DEBIAN_FRONTEND=noninteractive apt-get -y install wget mc nano sudo 
 # RUN apt -y install octave gnuplot libqt5gui5 # if you want to try octave kernel
-RUN wget https://repo.anaconda.com/miniconda/Miniconda3-py310_23.3.1-0-Linux-x86_64.sh
-RUN sh Miniconda3-py310_23.3.1-0-Linux-x86_64.sh -b -p /opt/miniconda3
+RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+RUN sh Miniconda3-latest-Linux-x86_64.sh -b -p /opt/miniconda3
 RUN groupadd -g $gid $user
 RUN useradd -u $uid -g $gid $user -s /bin/bash
 RUN mkdir -p /home/$user
