@@ -11,6 +11,7 @@ ARG pass=qwerty
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
  && DEBIAN_FRONTEND=noninteractive apt-get -y install wget mc nano sudo 
+# RUN apt -y install octave
 RUN wget https://repo.anaconda.com/miniconda/Miniconda3-py310_23.3.1-0-Linux-x86_64.sh
 RUN sh Miniconda3-py310_23.3.1-0-Linux-x86_64.sh -b -p /opt/miniconda3
 RUN groupadd -g $gid $user
