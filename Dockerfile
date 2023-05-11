@@ -1,12 +1,12 @@
 FROM ubuntu
 
-########## edit this section to change the UID/GID you like this container to run as ##############
+########## edit this section to change the username, UID/GID and passwd you like this container to run as ##############
 ARG user="user"
 ARG uid=1000
 ARG gid=1000
 # user password in the container
 ARG pass=qwerty
-###################################################################################################
+########################################################################################################################
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
