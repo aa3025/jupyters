@@ -16,6 +16,6 @@ Then run:
 
 Once image build process complete, the `02_startdocker.sh` script is launched automatically.
 
-If you want just to launch already existing image with IMAGEID build previously, do:
+If you want just to launch already existing image with IMAGEID built previously, do:
 
 `sh ./02_startdocker.sh IMAGEID`
