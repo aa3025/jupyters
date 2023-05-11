@@ -7,7 +7,7 @@ ARG gid=1000
 # user password in the container
 ARG pass=qwerty
 # user's pthon venv name to create
-ARG venv=jupyter
+ARG venv=jupyterenv
 ########################################################################################################################
 
 ENV DEBIAN_FRONTEND=noninteractive
@@ -31,7 +31,9 @@ EXPOSE 8888
 USER $user
 RUN \
      /opt/miniconda3/bin/conda create -y -n $venv python=3.10
-SHELL ["/opt/miniconda3/bin/conda", "run", "-n", "$venv", "/bin/bash", "-c"]
+     
+# SHELL does not seem to allow to put variables inside [ ] (passing $venv to it not possible?)
+SHELL ["/opt/miniconda3/bin/conda", "run", "-n", "jupyterenv", "/bin/bash", "-c"]
 RUN conda install -y jupyterlab ipykernel
 RUN conda install -y -c conda-forge octave_kernel matplotlib
 RUN python -m ipykernel install --user --name=$venv
