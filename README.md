@@ -12,7 +12,7 @@ If necessary edit the 1st section of the Dockerfile, to change user data: UID/GI
 
 Then run:
 
-`sh ./01_duild_image.sh`
+`sh ./01_build_image.sh`
 
 Once image build process complete, the `02_startdocker.sh` script is launched automatically.
 
