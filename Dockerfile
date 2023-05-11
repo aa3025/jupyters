@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM debian
 
 ########## edit this section to change the username, UID/GID and passwd you like this container to run as ##############
 ARG user="user"
