@@ -1,6 +1,6 @@
 # jupyters
 
-Dockerfile for creating a container with miniconda3 based python3 and environment "jup" for launching jupyter lab.
+Dockerfile for creating a container with miniconda3 based python3 and user environment "jup" for launching jupyter lab.
 
 To build the image, pull this repository
 
