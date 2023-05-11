@@ -20,7 +20,7 @@ gpus="" # if you dont need GPUs
 
 # do you want to share the local folder to the container?
   local_share=/home/$USER/share
-  share="-v ${share}:/share"
+  share="-v ${local_share}:/share"
 # if not enable below line: 
   # share=""
 
