@@ -9,6 +9,7 @@ To build the image, pull this repository
 cd jupyters
 
 If necessary edit the 1st section of the Dockerfile, to change user data: UID/GID, username and password and parameters section in 02_startdocker.sh file
+
 Then run:
 
 `sh ./01_duild_image.sh`
@@ -16,4 +17,5 @@ Then run:
 Once image build process complete, the `02_startdocker.sh` script is launched automatically.
 
 If you want just to launch already existing image build previously, do:
+
 `sh ./02_startdocker.sh IMAGEID`
