@@ -22,8 +22,9 @@ docker rm -f $container_name
 gpus="" # if you dont need GPUs
 
 # do you want to share the local folder to the container?
-  local_share=/home/$USER/share
+  local_share=$HOME/share
   share="-v ${local_share}:/share"
+  mkdir -p $local_share
 # if not enable below line: 
   # share=""
 
@@ -37,8 +38,6 @@ g_id=$(cat Dockerfile | grep "ARG gid" | cut -d'=' -f2)
 # change the jupyterlab token if you want
 token=qwerty
 #############################################
-
-mkdir -p $local_share
 
 docker run --rm -it -d $gpus $share --name ${container_name} --hostname ${container_name} $ports -e TZ=Europe/London ${docker_image} /bin/bash
 docker exec -u $u_id:$g_id ${container_name} /home/user/.conda/envs/jup/bin/jupyter lab --ip=0.0.0.0 --port=$port --NotebookApp.token=$token
