@@ -13,6 +13,9 @@ fi
 
 # name to gove to your container:
 container_name=${USER}_python3
+# remove previously created containers with the same name:
+docker rm -f $container_name
+
 
 # do you have GPUs? (Nvidia docker support plugin must be installed on the system), otherwise leave empty as gpus=""
 # gpus=" --gpus all"
