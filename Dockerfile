@@ -6,6 +6,8 @@ ARG uid=1000
 ARG gid=1000
 # user password in the container
 ARG pass=qwerty
+# user's pthon venv name to create
+ARG venv=jupyter
 ########################################################################################################################
 
 ENV DEBIAN_FRONTEND=noninteractive
@@ -21,17 +23,18 @@ RUN mkdir -p /home/$user
 RUN usermod -aG sudo $user
 RUN echo $user:$pass | chpasswd
 
-RUN echo "source /opt/miniconda3/bin/activate" >> /home/user/.bashrc
-RUN echo "conda activate jup" >> /home/user/.bashrc
+RUN echo "source /opt/miniconda3/bin/activate" >> /home/$user/.bashrc
+RUN echo "conda activate $venv" >> /home/$user/.bashrc
+RUN echo ". ~/.bashrc" >> /home/$user/.bash_profile
 RUN chown -R $user:$user /home/$user
 EXPOSE 8888
-USER user
+USER $user
 RUN \
-     /opt/miniconda3/bin/conda create -y -n jup python=3.10
-SHELL ["/opt/miniconda3/bin/conda", "run", "-n", "jup", "/bin/bash", "-c"]
+     /opt/miniconda3/bin/conda create -y -n $venv python=3.10
+SHELL ["/opt/miniconda3/bin/conda", "run", "-n", "$venv", "/bin/bash", "-c"]
 RUN conda install -y jupyterlab ipykernel
 RUN conda install -y -c conda-forge octave_kernel matplotlib
-RUN python -m ipykernel install --user --name=jup
+RUN python -m ipykernel install --user --name=$venv
 
 CMD "/bin/bash"
 # build as e.g. "docker build . -t my/image:last"
