@@ -1,6 +1,6 @@
 # jupyters
 
-Dockerfile for creating a container with miniconda3 based python3 and user environment "jup" for launching jupyter lab.
+Dockerfile and accompanying scripts for creating a container with miniconda3 based python3 and user environment "jup" for launching jupyter lab.
 
 To build the image, pull this repository
 
@@ -8,10 +8,12 @@ To build the image, pull this repository
 
 cd jupyters
 
-If necessary edit the 1st sectiopn of the Dockerfile, to change user data: UID/GID, username and password.
+If necessary edit the 1st section of the Dockerfile, to change user data: UID/GID, username and password and parameters section in 02_startdocker.sh file
+Then run:
 
-`docker build . -t username/mypythonimage:latest`
+`sh ./01_duild_image.sh`
 
-Once image build process complete, edit the ### params ### section of the container startup script "startdocker.sh" and execute it: 
+Once image build process complete, the `02_startdocker.sh` script is launched automatically.
 
-`sh ./startdocker.sh`
+If you want just to launch already existing image build previously, do:
+`sh ./02_startdocker.sh IMAGEID`
