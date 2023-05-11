@@ -3,7 +3,7 @@
 
 docker build . -t my/image:last | tee build.log
 
-# get id of build image
+# get id of the built image
 image_id=$(tail -n1 build.log | cut -d' ' -f3)
 
 sh ./02_startdocker.sh $image_id
