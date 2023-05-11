@@ -35,7 +35,8 @@ RUN \
 # SHELL does not seem to allow to put variables inside [ ] (passing $venv to it not possible?)
 SHELL ["/opt/miniconda3/bin/conda", "run", "-n", "jupyterenv", "/bin/bash", "-c"]
 RUN conda install -y jupyterlab ipykernel
-RUN conda install -y -c conda-forge octave_kernel matplotlib
+# any extra packages:
+# RUN conda install -y -c conda-forge octave_kernel matplotlib
 RUN python -m ipykernel install --user --name=$venv
 
 CMD "/bin/bash"
