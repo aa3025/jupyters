@@ -29,7 +29,7 @@ ports="-p $port:$port"
 
 # get UID and GID defined in Dockerfile:
 u_id=$(cat Dockerfile | grep "ARG uid" | cut -d'=' -f2)
-g_id=u_id=$(cat Dockerfile | grep "ARG gid" | cut -d'=' -f2)
+g_id=$(cat Dockerfile | grep "ARG gid" | cut -d'=' -f2)
 
 # change to the jupyterlab token you want
 token=qwerty
