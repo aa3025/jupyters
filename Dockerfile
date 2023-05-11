@@ -1,7 +1,7 @@
 FROM debian
 
 ########## edit this section to change the username, UID/GID and passwd you like this container to run as ##############
-ARG user="user"
+ARG user=user
 ARG uid=1000
 ARG gid=1000
 # user password in the container
