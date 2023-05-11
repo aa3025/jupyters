@@ -6,7 +6,7 @@ ARG uid=1000
 ARG gid=1000
 # user password in the container
 ARG pass=qwerty
-# user's pthon venv name to create
+# user python venv name to create (see also line 36)
 ARG venv=jupyterenv
 ########################################################################################################################
 
