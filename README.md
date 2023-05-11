@@ -12,6 +12,6 @@ If necessary edit the 1st sectiopn of the Dockerfile, to change user data: UID/G
 
 `docker build . -t username/mypythonimage:latest`
 
-Once image build process complete, edit the ### params ### section of the container startup script and execute it: 
+Once image build process complete, edit the ### params ### section of the container startup script "startdocker.sh" and execute it: 
 
 `sh ./startdocker.sh`
