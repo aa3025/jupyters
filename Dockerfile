@@ -30,4 +30,4 @@ RUN conda install -y -c conda-forge octave_kernel matplotlib
 RUN python -m ipykernel install --user --name=jup
 
 CMD "/bin/bash"
-# build as "docker build . -t aa3025/python3_10:latest"
+# build as "docker build . -t githubusername/python3_10:latest"
