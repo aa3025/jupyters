@@ -8,7 +8,7 @@ To build the image, pull this repository
 
 `cd jupyters`
 
-If necessary edit the 1st section of the Dockerfile, to change user data: UID/GID, username and password and parameters section in `02_startdocker.sh` file
+If necessary edit the 1st section of the Dockerfile, to change user data: UID/GID, username and password as well as parameters section in `02_startdocker.sh` file
 
 Then run:
 
