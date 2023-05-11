@@ -34,7 +34,7 @@ ports="-p $port:$port"
 u_id=$(cat Dockerfile | grep "ARG uid" | cut -d'=' -f2)
 g_id=$(cat Dockerfile | grep "ARG gid" | cut -d'=' -f2)
 
-# change to the jupyterlab token you want
+# change the jupyterlab token if you want
 token=qwerty
 #############################################
 
