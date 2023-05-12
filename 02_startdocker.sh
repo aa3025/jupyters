@@ -34,12 +34,14 @@ ports="-p $port:$port"
 # get UID and GID defined in Dockerfile:
 u_id=$(cat Dockerfile | grep "ARG uid" | cut -d'=' -f2)
 g_id=$(cat Dockerfile | grep "ARG gid" | cut -d'=' -f2)
+user=$(cat Dockerfile | grep "ARG user" | cut -d'=' -f2)
+pass=$(cat Dockerfile | grep "ARG pass" | cut -d'=' -f2)
 # venv name we created in Dockerfile
 venv=$(cat Dockerfile | grep "ARG venv" | cut -d'=' -f2)
 
 # change the jupyterlab token if you want
-token=qwerty
+token=$pass
 #############################################
 
 docker run --rm -it -d $gpus $share --name ${container_name} --hostname ${container_name} $ports -e TZ=Europe/London ${docker_image} /bin/bash
-docker exec -u $u_id:$g_id ${container_name} /home/user/.conda/envs/$venv/bin/jupyter lab --ip=0.0.0.0 --port=$port --NotebookApp.token=$token
+docker exec -u $u_id:$g_id ${container_name} /home/$user/.conda/envs/$venv/bin/jupyter lab --ip=0.0.0.0 --port=$port --NotebookApp.token=$token
