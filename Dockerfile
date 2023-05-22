@@ -40,4 +40,4 @@ RUN . /home/$user/$venv/bin/activate && pip install jupyterlab ipykernel
 RUN . /home/$user/$venv/bin/activate && python -m ipykernel install --user --name=$venv
 
 CMD "/bin/bash"
-# build as e.g. "docker build . -t my/image_pip:last"
+# build as e.g. "docker build . -t my/image:pip"
