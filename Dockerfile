@@ -24,20 +24,20 @@ RUN usermod -aG sudo $user
 RUN echo $user:$pass | chpasswd
 
 RUN echo "source /opt/miniconda3/bin/activate" >> /home/$user/.bashrc
-RUN echo "conda activate $venv" >> /home/$user/.bashrc
+RUN echo "source /home/$user/$venv/bin/activate" >> /home/$user/.bashrc
 RUN echo ". ~/.bashrc" >> /home/$user/.bash_profile
 RUN chown -R $user:$user /home/$user
 EXPOSE 8888
 USER $user
-RUN \
-     /opt/miniconda3/bin/conda create -y -n $venv python=3.10
+RUN /opt/miniconda3/bin/python3 -m venv /home/$user/$venv
+COPY requirements.txt .
+RUN . /home/$user/$venv/bin/activate && pip install -r requirements.txt
+RUN . /home/$user/$venv/bin/activate && pip install jupyterlab ipykernel
      
-# SHELL does not seem to allow to put variables inside [ ] (passing $venv to it not possible?)
-SHELL ["/opt/miniconda3/bin/conda", "run", "-n", "jupyterenv", "/bin/bash", "-c"]
-RUN conda install -y jupyterlab ipykernel
 # any extra packages:
-# RUN conda install -y -c conda-forge octave_kernel matplotlib
-RUN python -m ipykernel install --user --name=$venv
+RUN . /home/$user/$venv/bin/activate && pip install jupyterlab ipykernel matplotlib
+# kernel for jupyter
+RUN . /home/$user/$venv/bin/activate && python -m ipykernel install --user --name=$venv
 
 CMD "/bin/bash"
-# build as e.g. "docker build . -t my/image:last"
+# build as e.g. "docker build . -t my/image_pip:last"
