@@ -35,7 +35,7 @@ RUN . /home/$user/$venv/bin/activate && pip install -r requirements.txt
 RUN . /home/$user/$venv/bin/activate && pip install jupyterlab ipykernel
      
 # any extra packages:
-RUN . /home/$user/$venv/bin/activate && pip install jupyterlab ipykernel matplotlib
+# RUN . /home/$user/$venv/bin/activate && pip install jupyterlab ipykernel matplotlib
 # kernel for jupyter
 RUN . /home/$user/$venv/bin/activate && python -m ipykernel install --user --name=$venv
 
