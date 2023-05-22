@@ -4,7 +4,7 @@
 
 if [ -z "$1" ]; then
 # change to another existing docker image name you have built with the provided Dockerfile
-  docker_image="my/image:last"
+  docker_image="my/image:pip"
 else  
 # if $1 exists supply imageid as an external parameter:
 docker_image=$1
@@ -44,4 +44,4 @@ token=$pass
 #############################################
 
 docker run --rm -it -d $gpus $share --name ${container_name} --hostname ${container_name} $ports -e TZ=Europe/London ${docker_image} /bin/bash
-docker exec -u $u_id:$g_id ${container_name} /home/$user/.conda/envs/$venv/bin/jupyter lab --ip=0.0.0.0 --port=$port --NotebookApp.token=$token
+docker exec -u $u_id:$g_id ${container_name} /home/$user/$venv/bin/jupyter lab --ip=0.0.0.0 --port=$port --NotebookApp.token=$token
